@@ -71,12 +71,15 @@ def has_cycle(head: NewNode):
 
 
 if __name__ == '__main__':
+	# Question 1
 	head_node = Node(1, Node(2, Node(3, Node(4, Node(5)))))
 	reverse_linked_list(head_node)
 	
+	# Question 2
 	head_middle_node = Node(1, Node(2, Node(3, Node(4, Node(5)))))
 	find_middle_element(head_middle_node)
 	
+	# Question 3
 	new_head = NewNode(1, NewNode(2, NewNode(3, NewNode(4, NewNode(5)))))
 	node = NewNode(6)
 	temp = new_head

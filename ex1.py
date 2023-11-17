@@ -51,11 +51,14 @@ def remove_duplicates(arr):
 
 
 if __name__ == '__main__':
+	# Question 1
 	txt = "abcdefg"
 	reverse_string_in_place(txt)
 	
+	# Question 2
 	arr = [20, 10, 20, 4, 100]
 	find_min_max(arr)
 	
+	# Question 3
 	arr = [1, 1, 2, 3, 4, 4, 4, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9, 9, 9, 9]
 	remove_duplicates(arr)

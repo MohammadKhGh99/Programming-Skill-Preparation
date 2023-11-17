@@ -146,10 +146,8 @@ def check_parenthesis_balanced(expression):
 		stack.push(x)
 		queue.enqueue(x)
 	
-	"""
-	take one time the front item and another from the back and then compare them if they are equal
-	then the expression is balanced
-	"""
+	# take one item from the front and one from the back and then compare them if they are from the same type ("{}")
+	# then the expression is balanced
 	for _ in range(len(queue) // 2):
 		left = queue.dequeue()
 		right = stack.pop()
@@ -163,6 +161,7 @@ def check_parenthesis_balanced(expression):
 
 
 if __name__ == '__main__':
+	# Question 3
 	print(check_parenthesis_balanced('()'))
 	print(check_parenthesis_balanced('{}'))
 	print(check_parenthesis_balanced('[]'))
