@@ -4,7 +4,7 @@ from typing import Union, List, Tuple, Any
 # 1 - Implement a hash table and write functions to insert, delete, and search for elements.
 # there is two types of hashing, open hashing and closed hashing, I will use closed one
 class HashTable:
-    def __init__(self, size):
+    def __init__(self, size: int):
         self.size = size
         # self.table: List[None, List[Tuple[Any, Any]]] = [None] * size
         self.table = [None] * size
