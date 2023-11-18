@@ -7,7 +7,7 @@ class Node:
 
 
 # 1 - Write a program to find the lowest common ancestor of two nodes in a binary tree.
-def find_lowest_common_ancestor(root, node1, node2):
+def find_lowest_common_ancestor(root: Node, node1: Node, node2: Node):
     # if one of the nodes is the root of the binary tree so the lowest common ancestor is the root
     if root is None or root.value == node1.value or root.value == node2.value:
         return root
@@ -34,7 +34,7 @@ class BFSNode:
         self.neighbors = dict()
         
         
-def find_shortest_path_between_two_nodes(source, destination):
+def find_shortest_path_between_two_nodes(source: BFSNode, destination: BFSNode):
     from collections import deque
     
     if source is None or destination is None:
@@ -45,7 +45,7 @@ def find_shortest_path_between_two_nodes(source, destination):
     
     visited_nodes = set()
     queue = deque()
-    queue.append([(source, [source])])
+    queue.append((source, [source]))
     while len(queue) > 0:
         node, path = queue.popleft()
         if node.value == destination.value:
@@ -118,7 +118,7 @@ class BinarySearchTree:
     def search(self, value):
         return self._search_helper(self.root, value)
     
-    def _search_helper(self, root, value):
+    def _search_helper(self, root: Node, value):
         if root is None:
             return None
         
@@ -129,32 +129,34 @@ class BinarySearchTree:
         
         return root
     
-    def inorder_traversal(self, root):
-        if root:
-            # Traverse the left subtree
-            self.inorder_traversal(root.left)
-            # Print the current node's key
-            print(root.value, end=" ")
-            # Traverse the right subtree
-            self.inorder_traversal(root.right)
+    
+def inorder_traversal(root: Node):
+    if root:
+        # Traverse the left subtree
+        inorder_traversal(root.left)
+        # Print the current node's key
+        print(root.value, end=" ")
+        # Traverse the right subtree
+        inorder_traversal(root.right)
 
 
 if __name__ == '__main__':
     # Question 1
-    tree_anc = BinarySearchTree(3)
-    tree_anc.left = Node(5)
-    tree_anc.right = Node(1)
-    tree_anc.left.left = Node(6)
-    tree_anc.left.right = Node(2)
-    tree_anc.right.left = Node(0)
-    tree_anc.right.right = Node(8)
-    tree_anc.left.right.left = Node(7)
-    tree_anc.left.right.right = Node(4)
+    binary_tree = Node(3)
+    binary_tree.left = Node(5)
+    binary_tree.right = Node(1)
+    binary_tree.left.left = Node(6)
+    binary_tree.left.right = Node(2)
+    binary_tree.right.left = Node(0)
+    binary_tree.right.right = Node(8)
+    binary_tree.left.right.left = Node(7)
+    binary_tree.left.right.right = Node(4)
     
     node1 = Node(5)
     node2 = Node(1)
     
-    print("Lowest Common Ancestor: " + find_lowest_common_ancestor(tree_anc.root, node1, node2))
+    print("Lowest Common Ancestor: " + str(find_lowest_common_ancestor(binary_tree, node1, node2).value))
+    print()
     
     # Question 2
     # building the graph
@@ -176,7 +178,10 @@ if __name__ == '__main__':
     add_edge(node2, node5)
     add_edge(node3, node6)
     
-    print(f"Shortest Path Between {node1.value} & {node6.value}: " + find_shortest_path_between_two_nodes(node1, node6))
+    shortest = find_shortest_path_between_two_nodes(node1, node6)
+    lst = [node.value for node in shortest]
+    print(f"Shortest Path Between {node1.value} & {node6.value}: " + str(lst))
+    print()
     
     # Question 3
     tree = BinarySearchTree(5)
@@ -187,4 +192,4 @@ if __name__ == '__main__':
     tree.root.right.left = Node(6)
     tree.insert(8)
     # tree.root.right.right = Node(8)
-    tree.inorder_traversal(tree.root)
+    inorder_traversal(tree.root)

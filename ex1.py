@@ -1,6 +1,6 @@
 # 1 - Write a program to reverse a string in place.
 # naive way
-def reverse_string_in_place(text):
+def reverse_string_in_place(text: str):
 	print("The String Before Reversing: " + text)
 	for i in range(len(text)):
 		text = text[:i] + text[-1] + text[i:-1]
@@ -17,7 +17,7 @@ def reverse_string_in_place(text):
 
 
 # 2 - Write a program to find the maximum and minimum elements in an array.
-def find_min_max(arr):
+def find_min_max(arr: list):
 	print("The Array: " + str(arr))
 	minimum = arr[0]
 	maximum = arr[0]
@@ -35,7 +35,7 @@ def find_min_max(arr):
 
 
 # 3 - Write a program to remove duplicates from a sorted array.
-def remove_duplicates(arr):
+def remove_duplicates(arr: list):
 	print("The Array: " + str(arr))
 	i = 0
 	length = len(arr)

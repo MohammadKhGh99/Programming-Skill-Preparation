@@ -132,7 +132,7 @@ class QueueTwoStacks:
 	
 	
 # 3 - Write a program to check if a given string of parentheses is balanced.
-def check_parenthesis_balanced(expression):
+def check_parenthesis_balanced(expression: str):
 	if len(expression) % 2 == 1:
 		return False
 	

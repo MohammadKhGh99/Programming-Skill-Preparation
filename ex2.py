@@ -16,7 +16,7 @@ class Node:
 
 
 # 1 - Write a program to reverse a linked list.
-def reverse_linked_list(head):
+def reverse_linked_list(head: Node):
 	print("The Linked List Before Reversing: " + str(head))
 	last = None
 	while head.next is not None:
@@ -30,7 +30,7 @@ def reverse_linked_list(head):
 
 
 # 2 - Write a program to find the middle element of a linked list.
-def find_middle_element(head):
+def find_middle_element(head: Node):
 	print("The Linked List: " + str(head))
 	length = 0
 	temp = head
@@ -66,7 +66,6 @@ def has_cycle(head: NewNode):
 			return True
 		head.flag = 1
 		head = head.next
-	
 	return False
 
 
