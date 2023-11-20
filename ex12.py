@@ -5,6 +5,7 @@ class Logger:
     instance = None
     
     def __new__(cls):
+        # this will ensure that there's no other instance of the class Logger
         if cls.instance is None:
             cls.instance = super(Logger, cls).__new__(cls)
         return cls.instance
