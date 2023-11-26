@@ -29,13 +29,51 @@ class Solution(object):
 		:type nums: List[int]
 		:rtype: int
 		"""
+		if len(nums) < 2:
+			return None
+		longest_subarray = -1
+		# check the condition when the initial length is 2
+		cur_subarray = nums[:2]
+		if cur_subarray[1] == cur_subarray[0] + 1:
+			longest_subarray = 2
+		else:
+			cur_subarray = cur_subarray[1:]
 		
+		for i in range(2, len(nums)):
+			# this check the condition when we want to add an element to the subarray which his index is even
+			if len(cur_subarray) % 2 == 0:
+				# if it fulfills the wanted condition
+				if nums[i] - cur_subarray[-1] == -1:
+					cur_subarray.append(nums[i])
+				else:
+					longest_subarray = max(longest_subarray, len(cur_subarray))
+					if nums[i] - cur_subarray[-1] == 1:
+						cur_subarray = [cur_subarray[-1], nums[i]]
+					else:
+						cur_subarray = [nums[i]]
+			# this check the condition when we want to add an element to the subarray which his index is odd
+			else:
+				# if it fulfills the wanted condition
+				if nums[i] - cur_subarray[-1] == 1:
+					cur_subarray.append(nums[i])
+				else:
+					# if the current array doesn't fulfill the wanted condition and its length is 1
+					if len(cur_subarray) == 1:
+						cur_subarray = [nums[i]]
+						continue
+					longest_subarray = max(longest_subarray, len(cur_subarray))
+					if nums[i] - cur_subarray[-1] == 1:
+						cur_subarray = [nums[i]]
+					else:
+						cur_subarray = [cur_subarray[-1], nums[i]]
+		
+		return max(longest_subarray, len(cur_subarray)) if len(cur_subarray) > 1 else longest_subarray
 
 
 if __name__ == '__main__':
 	solution = Solution()
 	
-	nums = [2, 3, 4, 3, 4]
+	nums = [21, 9, 5]
 	print(f"Input: nums = {nums}")
 	print(f"Output: {solution.alternatingSubarray(nums)}")
 	print()
